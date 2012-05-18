@@ -79,6 +79,8 @@
 				options.text = user_options.text;
 			}
 			
+			//NEXTSTEP FUNCTION
+			
 		}
 		else if (user_options.body)
 		{
@@ -95,13 +97,35 @@
 			{
 				options.text = user_options.body;
 			}
+			
+			//NEXTSTEP FUNCTION
 		}
 		else if (user_options.view) //template engine.
 		{
 			render(user_options, function(err, html)
 			{
     			console.log(err);
-    			console.log(html);
+    			if (err)
+    			{
+    				callback(true, {type: 'template', template_error: err});
+    			}
+    			else
+    			{
+	    			if (encoding == 'both')
+					{
+						options.generateTextFromHTML = true;
+						options.html = html;
+					}
+					else if (encoding == 'html')
+					{
+						options.html = html;
+					}	
+					else //text
+					{
+						options.text = html;
+					}    			
+    				//NEXTSTEP FUNCTION
+    			}
 			});
 		}
 		//do body settings/detection here
