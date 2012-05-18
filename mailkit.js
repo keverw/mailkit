@@ -108,6 +108,12 @@
 			options.attachments = user_options.attachments;
 		}
 		
+		//set the envelope
+		if (user_options.envelope)
+		{
+			options.envelope = user_options.envelope;
+		}
+		
 		//Set encoding
 		if (user_options.encoding == 'text') //text
 		{

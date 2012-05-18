@@ -120,6 +120,8 @@ If you don't want to send the email, but render the body. We can do that also!
 * **smtp** - refer to the SMTP section for more details, if not defined sendmail will be used as the transporter when you send. If you wish to change your transporter(EG: SMTP details, you'll have to use a new instance of MailKit.)
 * **headers** - An object of additional header fields `{"X-Key-Name": "key value"}` (values are passed as is, you should do your own encoding to 7bit if needed)
 * **attachments** - An array of attachment objects. See attachment fields for more details.
+* **envelope** - optional SMTP envelope, if auto generated envelope is not suitable
+
 
 
 **Layout:**
@@ -151,6 +153,25 @@ Possible SMTP options are the following:
 * **ignoreTLS** - ignore server support for STARTTLS (defaults to false)
 * **debug** - output client and server messages to console
 * **maxConnections** - how many connections to keep in the pool (defaults to 5)
+
+##SMTP envelope##
+
+SMTP envelope is usually auto generated from `from`, `to`, `cc` and `bcc` fields but if for some reason you want to specify it yourself, you can do it with `envelope` property.
+
+`envelope` is an object with the following params: `from`, `to`, `cc` and `bcc` just like with regular mail options. You can also use the regular address format.
+
+```
+mailOptions = {
+    ...,
+    from: "mailer@node.ee",
+    to: "daemon@node.ee",
+    envelope: {
+        from: "Daemon <deamon@node.ee>",
+        to: "mailer@node.ee, Mailer <mailer2@node.ee>"
+    }
+}
+```
+
 
 ##Attachment fields##
 
