@@ -1,5 +1,7 @@
 #MailKit#
 
+**NOT READY YET. DO NOT USE.**
+
 A simple but powerful email wrapper around [Nodemailer](https://github.com/andris9/Nodemailer).
 
 ##Features:##
