@@ -114,6 +114,12 @@
 			options.envelope = user_options.envelope;
 		}
 		
+		//set the messageId
+		if (user_options.messageId)
+		{
+			options.messageId = user_options.messageId;
+		}
+		
 		//Set encoding
 		if (user_options.encoding == 'text') //text
 		{

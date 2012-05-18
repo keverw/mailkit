@@ -121,7 +121,7 @@ If you don't want to send the email, but render the body. We can do that also!
 * **headers** - An object of additional header fields `{"X-Key-Name": "key value"}` (values are passed as is, you should do your own encoding to 7bit if needed)
 * **attachments** - An array of attachment objects. See attachment fields for more details.
 * **envelope** - optional SMTP envelope, if auto generated envelope is not suitable
-
+**messageId** - optional Message-Id value, random value will be generated if not set. Set to false to omit the Message-Id header
 
 
 **Layout:**
