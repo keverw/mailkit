@@ -70,8 +70,10 @@ If you don't want to send the email, but render the body. We can do that also!
 * **from_name** - `Sender Name` //when using `from_addr`, `from_name` will add a name.
 * **to** - An address or list
 * **subject** - The email subject.
-* **encoding** - `html` or `text`. Default is `html`
-* **body** - The body, for when not using a template.
+* **encoding** - `html` or `text` or `both`. Default is `html` if the `encoding` is `text` and you send `html`, the `html` will be displayed as `text`.
+* **body** - The body, for when not using a template. Using `body` overrides everything in the layout section. Will be used for `html` and `text`
+* **html** - override the body, and set your own HTML.
+* **text** - overrides the body, and set your own text. You can use both `html` and `text`. HTML will be displayed to clients that support `html`, `text` is a failback for those that don't. If you set the `encoding` to both and only provide `html`, `text` will be generated from the `html`.
 * **smtp** - refer to the SMTP section for more details, if not defined sendmail will be used as the transporter when you send. If you wish to change your transporter(EG: SMTP details, you'll have to use a new instance of MailKit.)
 
 **Layout:**
