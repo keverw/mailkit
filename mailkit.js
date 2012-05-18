@@ -1,7 +1,49 @@
 (function() {
 
+	//helper functions
+	function numKeys(obj)
+	{
+    	var count = 0;
+    	for(var prop in obj)
+    	{
+    	    count++;
+    	}
+    	return count;
+	}
+
+	//module
 	var nodemailer = require('nodemailer');
 	var transport = null;
+	
+	function send_part2(encoding, user_options, options, callback) //Check for SMTP and then send!
+	{
+		if (transport == null)
+		{
+			if (numKeys(user_options.smtp) > 0) //Set SMTP ideas
+			{
+				transport = nodemailer.createTransport('SMTP', user_options.smtp);
+			}
+			else //sendmail
+			{
+				transport = nodemailer.createTransport('sendmail');
+			}
+		}
+		
+		//send
+		console.log('encoding: ' + encoding);
+		console.log(options);
+		transport.sendMail(options, function(error, response)
+		{
+			if(error)
+			{
+				callback(true, response);
+			}
+			else
+			{
+				callback(false, response);
+			}
+		});
+	}
 	
 	function send(user_options, callback)
 	{
@@ -79,7 +121,7 @@
 				options.text = user_options.text;
 			}
 			
-			//NEXTSTEP FUNCTION - Check for SMTP and then send!
+			send_part2(encoding, user_options, options, callback);
 			
 		}
 		else if (user_options.body)
@@ -98,7 +140,7 @@
 				options.text = user_options.body;
 			}
 			
-			//NEXTSTEP FUNCTION - Check for SMTP and then send!
+			send_part2(encoding, user_options, options, callback);
 		}
 		else if (user_options.view) //template engine.
 		{
@@ -124,16 +166,10 @@
 					{
 						options.text = html;
 					}    			
-    				//NEXTSTEP FUNCTION - Check for SMTP and then send!
+    				send_part2(encoding, user_options, options, callback);
     			}
 			});
 		}
-		//do body settings/detection here
-		
-		console.log('encoding: ' + encoding);
-		console.log(options);
-		
-		//callback(false, {});
 	}
 	
 	function render(user_options, callback)

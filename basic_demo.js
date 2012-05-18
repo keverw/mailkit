@@ -5,7 +5,7 @@ var mailOptions = {
     from_addr: "sender@localhost",
     to: "lolkatz@localhost", // can also be a list: "receiver1@example.com, receiver2@example.com"
     subject: "Hello ✔", // Subject line,
-    encoding: 'both',
+    encoding: 'html',
     view: './templates/layout.bt',
     subview: './templates/signup.bt',
     data: {year: '2012'}
