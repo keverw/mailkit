@@ -111,6 +111,7 @@ If you don't want to send the email, but render the body. We can do that also!
 * **to** - A single address or list that will appear on the `To:` field
 * **cc** - A single address or list that will appear on the `CC:` field
 * **bcc** - A single address or list that will appear on the `BCC:` field
+* **replyTo** - An e-mail address that will appear on the `Reply-To:` field
 * **subject** - The email subject.
 * **encoding** - `html` or `text` or `both`. Default is `html` if the `encoding` is `text` and you send `html`, the `html` will be displayed as `text`.
 * **body** - The body, for when not using a template. Using `body` overrides everything in the layout section. Will be used for `html` and `text`

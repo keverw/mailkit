@@ -84,6 +84,12 @@
 			options.bcc = user_options.bcc;
 		}
 		
+		//Set the bcc option
+		if (user_options.replyTo)
+		{
+			options.replyTo = user_options.replyTo;
+		}
+		
 		//set the subject option
 		if (user_options.subject)
 		{
