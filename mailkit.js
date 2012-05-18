@@ -30,6 +30,16 @@
 			options.to = user_options.to;
 		}
 		
+		//set the subject option
+		if (user_options.subject)
+		{
+			options.subject = user_options.subject;
+		}
+		
+		//body
+		
+		//do body settings/detection here
+		
 		console.log(options);
 		
 		callback(false, {});
