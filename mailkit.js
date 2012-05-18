@@ -36,10 +36,61 @@
 			options.subject = user_options.subject;
 		}
 		
-		//body
+		//Set encoding
+		if (user_options.encoding == 'text') //text
+		{
+			var encoding = 'text';
+		}
+		else if (user_options.encoding == 'html') //html
+		{
+			var encoding = 'html';
+		}
+		else if (user_options.encoding == 'both') //html
+		{
+			var encoding = 'both';
+		}
+		else //html
+		{
+			var encoding = 'html';
+		}
 		
+		//body
+		if (user_options.html || user_options.text)
+		{
+			if (encoding == 'both' && !user_options.text)
+			{
+				options.generateTextFromHTML = true;
+			}
+			
+			if (user_options.html)
+			{
+				if (encoding == 'text')
+				{
+					options.text = user_options.html;
+				}
+				else
+				{
+					options.html = user_options.html;
+				}
+			}
+			
+			if (user_options.text)
+			{
+				options.text = user_options.text;
+			}
+			
+		}
+		else if (user_options.body)
+		{
+			
+		}
+		else if (user_options.view) //templating engine.
+		{
+			
+		}
 		//do body settings/detection here
 		
+		console.log('encoding: ' + encoding);
 		console.log(options);
 		
 		callback(false, {});
