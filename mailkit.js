@@ -72,6 +72,18 @@
 			options.to = user_options.to;
 		}
 		
+		//Set the cc option
+		if (user_options.cc)
+		{
+			options.cc = user_options.cc;
+		}
+		
+		//Set the bcc option
+		if (user_options.bcc)
+		{
+			options.bcc = user_options.bcc;
+		}
+		
 		//set the subject option
 		if (user_options.subject)
 		{

@@ -108,7 +108,9 @@ If you don't want to send the email, but render the body. We can do that also!
 * **from** - `Sender Name ✔ <sender@example.com>`
 * **from_addr** - `sender@example.com` //`from_addr` will overwrite from
 * **from_name** - `Sender Name` //when using `from_addr`, `from_name` will add a name.
-* **to** - An address or list
+* **to** - A single address or list that will appear on the `To:` field
+* **cc** - A single address or list that will appear on the `CC:` field
+* **bcc** - A single address or list that will appear on the `BCC:` field
 * **subject** - The email subject.
 * **encoding** - `html` or `text` or `both`. Default is `html` if the `encoding` is `text` and you send `html`, the `html` will be displayed as `text`.
 * **body** - The body, for when not using a template. Using `body` overrides everything in the layout section. Will be used for `html` and `text`
