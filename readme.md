@@ -122,7 +122,9 @@ If you don't want to send the email, but render the body. We can do that also!
 * **attachments** - An array of attachment objects. See attachment fields for more details.
 * **envelope** - optional SMTP envelope, if auto generated envelope is not suitable
 **messageId** - optional Message-Id value, random value will be generated if not set. Set to false to omit the Message-Id header
+**encoding** - optional transfer encoding for the textual parts (defaults to "quoted-printable")
 
+All text fields (e-mail addresses, plaintext body, html body) use UTF-8 as the encoding. Attachments are streamed as binary.
 
 **Layout:**
 

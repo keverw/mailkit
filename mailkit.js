@@ -120,6 +120,12 @@
 			options.messageId = user_options.messageId;
 		}
 		
+		//set the encoding
+		if (user_options.encoding)
+		{
+			options.encoding = user_options.encoding;
+		}
+		
 		//Set mime
 		if (user_options.mime == 'text') //text
 		{
