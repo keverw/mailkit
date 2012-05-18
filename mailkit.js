@@ -96,7 +96,7 @@
 				options.text = user_options.body;
 			}
 		}
-		else if (user_options.view) //templating engine.
+		else if (user_options.view) //template engine.
 		{
 			
 		}
