@@ -119,6 +119,7 @@ If you don't want to send the email, but render the body. We can do that also!
 * **text** - overrides the body, and set your own text. You can use both `html` and `text`. HTML will be displayed to clients that support `html`, `text` is a failback for those that don't. If you set the `encoding` to both and only provide `html`, `text` will be generated from the `html`.
 * **smtp** - refer to the SMTP section for more details, if not defined sendmail will be used as the transporter when you send. If you wish to change your transporter(EG: SMTP details, you'll have to use a new instance of MailKit.)
 * **headers** - An object of additional header fields `{"X-Key-Name": "key value"}` (values are passed as is, you should do your own encoding to 7bit if needed)
+* **attachments** - An array of attachment objects. See attachment fields for more details.
 
 
 **Layout:**
@@ -151,6 +152,74 @@ Possible SMTP options are the following:
 * **debug** - output client and server messages to console
 * **maxConnections** - how many connections to keep in the pool (defaults to 5)
 
+##Attachment fields##
+
+Attahcment object consists of the following properties:
+
+* **fileName** - filename to be reported as the name of the attached file, use of unicode is allowed (except when using Amazon SES which doesn't like it)
+* **cid** - optional content id for using inline images in HTML message source
+* **contents** - String or a Buffer contents for the attachment
+* **filePath** - path to a file or an URL if you want to stream the file instead of including it (better for larger attachments)
+* **streamSource** - Stream object for arbitrary binary streams if you want to stream the contents (needs to support pause/resume)
+* **contentType** - optional content type for the attachment, if not set will be derived from the fileName property
+* **contentDisposition** - optional content disposition type for the attachment, defaults to "attachment"
+
+One of `contents`, `filePath `or `streamSource` must be specified, if none is present, the attachment will be discarded. Other fields are optional.
+Attachments can be added as many as you want.
+
+```
+var mailOptions = {
+    ...
+    attachments: [
+        {   // utf-8 string as an attachment
+            fileName: "text1.txt",
+            contents: "hello world!
+        },
+        {   // binary buffer as an attachment
+        fileName: "text2.txt",
+            contents: new Buffer("hello world!,"utf-8")
+        },
+        {   // file on disk as an attachment
+            fileName: "text3.txt",
+            filePath: "/path/to/file.txt" // stream this file
+        },
+        {   // fileName and content type is derived from filePath
+            filePath: "/path/to/file.txt"
+        },
+        {   // stream as an attachment
+            fileName: "text4.txt",
+            streamSource: fs.createReadStream("file.txt")
+        },
+        {   // define custom content type for the attachment
+            fileName: "text.bin",
+            contents: "hello world!,
+            contentType: "text/plain"
+        },
+        {   // use URL as an attachment
+            fileName: "license.txt",
+            filePath: "https://raw.github.com/andris9/Nodemailer/master/LICENSE"
+        }
+    ]
+}
+```
+
+##Using Embedded Images##
+
+Attachments can be used as embedded images in the HTML body. To use this feature, you need to set additional property of the attachment - `cid` (unique identifier of the file) which is a reference to the attachment file. The same `cid` value must be used as the image URL in HTML (using `cid:` as the URL protocol, see example below).
+
+The `cid` value should be as unique as possible!
+
+```
+var mailOptions = {
+    ...
+    html: "Embedded image: <img src='cid:unique@node.ee' />",
+    attachments: [{
+        filename: "image.png",
+        filePath: "/path/to/file",
+        cid: "unique@node.ee" //same cid value as in the html img src
+    }]
+}
+```
 ##Well known services for SMTP##
 
 If you want to use a well known service as the SMTP host, you do not need to enter the hostname or port number, just use the `service` parameter (case sensitive).
@@ -173,4 +242,4 @@ Currently cupported services are:
 Predefined service data covers `host`, `port` and secure connection settings, any other parameters (ie. `auth`) need to be set separately.
 
 ##Credits##
-This is based on Nodemailer, and some of this readme is based on it's docs.
+This is based on Nodemailer 0.3.20, and some of this readme is based on it's docs.

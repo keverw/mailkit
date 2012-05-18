@@ -102,6 +102,12 @@
 			options.headers = user_options.headers;
 		}
 		
+		//set the attachments
+		if (user_options.attachments)
+		{
+			options.attachments = user_options.attachments;
+		}
+		
 		//Set encoding
 		if (user_options.encoding == 'text') //text
 		{
