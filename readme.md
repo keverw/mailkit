@@ -66,7 +66,7 @@ If you don't want to send the email, but render the body. We can do that also!
 
 ##Mail Options##
 * **from** - `Sender Name ✔ <sender@example.com>`
-* **from_addr** - `sender@example.com` //from_addr will overwrite from
+* **from_addr** - `sender@example.com` //`from_addr` will overwrite from
 * **from_name** - `Sender Name` //when using `from_addr`, `from_name` will add a name.
 * **to** - An address or list
 * **subject** - The email subject.
