@@ -21,7 +21,7 @@ To set up diskspace.js on your Node.js server use npm.
 if no `smtp` details is defined, sendmail will be used by default, this should work on Mac and Linux systems.
 
 ```
-var email_out = require('mailkit');
+var mailkit = require('mailkit');
 
 var mailOptions = {
     from: "Sender Name ✔ <sender@example.com>", // sender address
@@ -30,18 +30,16 @@ var mailOptions = {
     body: "<b>Hello world ✔</b>" //body
 }
 
-
-
-
-email_out.send(mailOptions, function(error, status)
+mailkit.send(mailOptions, function(error, status)
 {
+	console.log(status);
 	if (error)
 	{
-		//an error
+		console.log('an error');
 	}
 	else
 	{
-		//not an error!
+		console.log('not an error!');
 	}
 });
 ```
