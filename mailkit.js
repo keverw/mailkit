@@ -82,7 +82,19 @@
 		}
 		else if (user_options.body)
 		{
-			
+			if (encoding == 'both')
+			{
+				options.generateTextFromHTML = true;
+				options.html = user_options.body;
+			}
+			else if (encoding == 'html')
+			{
+				options.html = user_options.body;
+			}
+			else //text
+			{
+				options.text = user_options.body;
+			}
 		}
 		else if (user_options.view) //templating engine.
 		{
