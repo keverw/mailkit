@@ -1,13 +1,10 @@
-#MailKit#
-
-**NOT READY YET. DO NOT USE.**
+#MailKit 0.1#
 
 A simple but powerful email wrapper around [Nodemailer](https://github.com/andris9/Nodemailer).
 
 ##Features:##
 * raw html body
 * basic templating engine.
-* Fail 2 Database
 
 ##Supports##
 * SMTP
@@ -47,12 +44,9 @@ mailkit.send(mailOptions, function(error, status)
 ```
 
 error is true or false.
-status is an object with more details
+status is an object with more details.
 
-Example object: 
-
-PUT EXAMPLE HERE
-
+I recommend saving the failed emails to your database to try to resend later.
 
 
 ## SMTP Usage ##
@@ -98,9 +92,6 @@ mailkit.send(mailOptions, function(error, status)
 ```
 
 
-## Template Usage ##
-
-
 ## Render ##
 If you don't want to send the email, but render the body. We can do that also!
 
@@ -126,10 +117,10 @@ If you don't want to send the email, but render the body. We can do that also!
 
 All text fields (e-mail addresses, plaintext body, html body) use UTF-8 as the encoding. Attachments are streamed as binary.
 
-**Layout:**
+**Layout - Template Usage:**
 
-* **view** - path to view .html file
-* **subview** - path to subview, use `{subview}` in your `view` to display this.
+* **view** - location of view file
+* **subview** - location of subview, use `{{subview}}` in your `view` to display this. This is optionally.
 * **data** - A Javascript object. 
 
 ```
@@ -139,8 +130,6 @@ All text fields (e-mail addresses, plaintext body, html body) use UTF-8 as the e
 }
 ```
 and then in your view you use `{username}` to display the username.
-
-**Fail 2 Database:**
 
 ##SMTP##
 
@@ -265,4 +254,4 @@ Currently cupported services are:
 Predefined service data covers `host`, `port` and secure connection settings, any other parameters (ie. `auth`) need to be set separately.
 
 ##Credits##
-This is based on Nodemailer 0.3.20, and some of this readme is based on it's docs.
+This is based on Nodemailer 0.3.20, and some of this readme is copied from it's docs.
