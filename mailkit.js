@@ -79,7 +79,7 @@
 				options.text = user_options.text;
 			}
 			
-			//NEXTSTEP FUNCTION
+			//NEXTSTEP FUNCTION - Check for SMTP and then send!
 			
 		}
 		else if (user_options.body)
@@ -98,7 +98,7 @@
 				options.text = user_options.body;
 			}
 			
-			//NEXTSTEP FUNCTION
+			//NEXTSTEP FUNCTION - Check for SMTP and then send!
 		}
 		else if (user_options.view) //template engine.
 		{
@@ -124,7 +124,7 @@
 					{
 						options.text = html;
 					}    			
-    				//NEXTSTEP FUNCTION
+    				//NEXTSTEP FUNCTION - Check for SMTP and then send!
     			}
 			});
 		}
