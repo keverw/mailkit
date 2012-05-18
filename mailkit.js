@@ -24,6 +24,12 @@
 			options.from = user_options.from;
 		}
 		
+		//Set the to option
+		if (user_options.to)
+		{
+			options.to = user_options.to;
+		}
+		
 		console.log(options);
 		
 		callback(false, {});
