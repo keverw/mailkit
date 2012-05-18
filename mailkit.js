@@ -98,17 +98,41 @@
 		}
 		else if (user_options.view) //template engine.
 		{
-			
+			render(user_options, function(err, html)
+			{
+    			console.log(err);
+    			console.log(html);
+			});
 		}
 		//do body settings/detection here
 		
 		console.log('encoding: ' + encoding);
 		console.log(options);
 		
-		callback(false, {});
+		//callback(false, {});
+	}
+	
+	function render(user_options, callback)
+	{
+		var basictemplate = require('basictemplate');
+		if (user_options.subview) //Contains a subview
+		{
+			basictemplate.render_sub(user_options.view, user_options.subview, user_options.data, function(err, html)
+			{
+    			callback(err, html);
+			});
+		}
+		else //just a single view
+		{
+			basictemplate.render(user_options.view, user_options.data, function(err, html)
+			{
+    			callback(err, html);
+			});
+		}
 	}
 	// Export public API
 	var mailkit = {};
 	mailkit.send = send;
+	mailkit.render = render;
 	module.exports = mailkit;
 }());

@@ -6,8 +6,11 @@ var mailOptions = {
     to: "lolkatz@localhost", // can also be a list: "receiver1@example.com, receiver2@example.com"
     subject: "Hello ✔", // Subject line,
     encoding: 'both',
+    view: './templates/layout.bt',
+    subview: './templates/signup.bt',
+    data: {year: '2012'}
     //html: "<b>Hello world ✔</b>",
-    body: "<b>Hello world ✔</b>" //body
+    //body: "<b>Hello world ✔</b>" //body
 }
 
 mailkit.send(mailOptions, function(error, status)
