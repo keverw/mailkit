@@ -10,7 +10,7 @@
   "main": "mailkit.js",
   "dependencies": {
     "nodemailer": "0.3.20",
-    "basictemplate" : "0.1.0"
+    "basictemplate" : "0.1.2"
   },
   "devDependencies": {},
   "optionalDependencies": {},
