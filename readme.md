@@ -74,7 +74,7 @@ var mailOptions = {
     from_addr: "username@gmail.com",
     to: "lolkatz@localhost", // can also be a list: "receiver1@example.com, receiver2@example.com"
     subject: "Hello ✔", // Subject line,
-    encoding: 'html',
+    mime: 'html',
     view: './templates/layout.bt',
     subview: './templates/signup.bt',
     data: {year: '2012'},
@@ -113,10 +113,10 @@ If you don't want to send the email, but render the body. We can do that also!
 * **bcc** - A single address or list that will appear on the `BCC:` field
 * **replyTo** - An e-mail address that will appear on the `Reply-To:` field
 * **subject** - The email subject.
-* **encoding** - `html` or `text` or `both`. Default is `html` if the `encoding` is `text` and you send `html`, the `html` will be displayed as `text`.
+* **mime** - `html` or `text` or `both`. Default is `html` if the `mime` is `text` and you send `html`, the `html` will be displayed as `text`.
 * **body** - The body, for when not using a template. Using `body` overrides everything in the layout section. Will be used for `html` and `text`
 * **html** - override the body, and set your own HTML.
-* **text** - overrides the body, and set your own text. You can use both `html` and `text`. HTML will be displayed to clients that support `html`, `text` is a failback for those that don't. If you set the `encoding` to both and only provide `html`, `text` will be generated from the `html`.
+* **text** - overrides the body, and set your own text. You can use both `html` and `text`. HTML will be displayed to clients that support `html`, `text` is a failback for those that don't. If you set the `mime` to both and only provide `html`, `text` will be generated from the `html`.
 * **smtp** - refer to the SMTP section for more details, if not defined sendmail will be used as the transporter when you send. If you wish to change your transporter(EG: SMTP details, you'll have to use a new instance of MailKit.)
 * **headers** - An object of additional header fields `{"X-Key-Name": "key value"}` (values are passed as is, you should do your own encoding to 7bit if needed)
 * **attachments** - An array of attachment objects. See attachment fields for more details.

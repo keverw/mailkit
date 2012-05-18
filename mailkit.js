@@ -15,7 +15,7 @@
 	var nodemailer = require('nodemailer');
 	var transport = null;
 	
-	function send_part2(encoding, user_options, options, callback) //Check for SMTP and then send!
+	function send_part2(mime, user_options, options, callback) //Check for SMTP and then send!
 	{
 		if (transport == null)
 		{
@@ -30,7 +30,7 @@
 		}
 		
 		//send
-		console.log('encoding: ' + encoding);
+		console.log('mime: ' + mime);
 		console.log(options);
 		transport.sendMail(options, function(error, response)
 		{
@@ -120,35 +120,35 @@
 			options.messageId = user_options.messageId;
 		}
 		
-		//Set encoding
-		if (user_options.encoding == 'text') //text
+		//Set mime
+		if (user_options.mime == 'text') //text
 		{
-			var encoding = 'text';
+			var mime = 'text';
 		}
-		else if (user_options.encoding == 'html') //html
+		else if (user_options.mime == 'html') //html
 		{
-			var encoding = 'html';
+			var mime = 'html';
 		}
-		else if (user_options.encoding == 'both') //html
+		else if (user_options.mime == 'both') //html
 		{
-			var encoding = 'both';
+			var mime = 'both';
 		}
 		else //html
 		{
-			var encoding = 'html';
+			var mime = 'html';
 		}
 		
 		//body
 		if (user_options.html || user_options.text)
 		{
-			if (encoding == 'both' && !user_options.text)
+			if (mime == 'both' && !user_options.text)
 			{
 				options.generateTextFromHTML = true;
 			}
 			
 			if (user_options.html)
 			{
-				if (encoding == 'text')
+				if (mime == 'text')
 				{
 					options.text = user_options.html;
 				}
@@ -163,17 +163,17 @@
 				options.text = user_options.text;
 			}
 			
-			send_part2(encoding, user_options, options, callback);
+			send_part2(mime, user_options, options, callback);
 			
 		}
 		else if (user_options.body)
 		{
-			if (encoding == 'both')
+			if (mime == 'both')
 			{
 				options.generateTextFromHTML = true;
 				options.html = user_options.body;
 			}
-			else if (encoding == 'html')
+			else if (mime == 'html')
 			{
 				options.html = user_options.body;
 			}
@@ -182,7 +182,7 @@
 				options.text = user_options.body;
 			}
 			
-			send_part2(encoding, user_options, options, callback);
+			send_part2(mime, user_options, options, callback);
 		}
 		else if (user_options.view) //template engine.
 		{
@@ -195,12 +195,12 @@
     			}
     			else
     			{
-	    			if (encoding == 'both')
+	    			if (mime == 'both')
 					{
 						options.generateTextFromHTML = true;
 						options.html = html;
 					}
-					else if (encoding == 'html')
+					else if (mime == 'html')
 					{
 						options.html = html;
 					}	
@@ -208,7 +208,7 @@
 					{
 						options.text = html;
 					}    			
-    				send_part2(encoding, user_options, options, callback);
+    				send_part2(mime, user_options, options, callback);
     			}
 			});
 		}
