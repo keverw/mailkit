@@ -118,6 +118,8 @@ If you don't want to send the email, but render the body. We can do that also!
 * **html** - override the body, and set your own HTML.
 * **text** - overrides the body, and set your own text. You can use both `html` and `text`. HTML will be displayed to clients that support `html`, `text` is a failback for those that don't. If you set the `encoding` to both and only provide `html`, `text` will be generated from the `html`.
 * **smtp** - refer to the SMTP section for more details, if not defined sendmail will be used as the transporter when you send. If you wish to change your transporter(EG: SMTP details, you'll have to use a new instance of MailKit.)
+* **headers** - An object of additional header fields `{"X-Key-Name": "key value"}` (values are passed as is, you should do your own encoding to 7bit if needed)
+
 
 **Layout:**
 

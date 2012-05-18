@@ -96,6 +96,12 @@
 			options.subject = user_options.subject;
 		}
 		
+		//set the headers
+		if (user_options.headers)
+		{
+			options.headers = user_options.headers;
+		}
+		
 		//Set encoding
 		if (user_options.encoding == 'text') //text
 		{
