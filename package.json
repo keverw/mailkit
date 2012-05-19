@@ -2,7 +2,7 @@
   "author": "Kevin Whitman (https://github.com/keverw)",
   "name": "mailkit",
   "description": "A simple but powerful email wrapper around Nodemailer.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/keverw/mailkit"
@@ -10,7 +10,7 @@
   "main": "mailkit.js",
   "dependencies": {
     "nodemailer": "0.3.20",
-    "basictemplate" : "0.1.4"
+    "basictemplate" : "0.1.5"
   },
   "devDependencies": {},
   "optionalDependencies": {},
