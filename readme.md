@@ -12,9 +12,9 @@ A simple but powerful email wrapper around [Nodemailer](https://github.com/andri
 * unicode
 
 ## Setup ##
-To set up diskspace.js on your Node.js server use npm.
+To set up MailKit on your Node.js server use npm.
 
-    npm install {LATER!!!}
+    npm install mailkit
 
 ## Basic Usage ##
 if no `smtp` details is defined, sendmail will be used by default, this should work on Mac and Linux systems.
