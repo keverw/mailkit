@@ -120,7 +120,7 @@ All text fields (e-mail addresses, plaintext body, html body) use UTF-8 as the e
 **Layout - Template Usage:**
 
 * **view** - location of view file
-* **subview** - location of subview, use `{{subview}}` in your `view` to display this. This is optionally.
+* **subview** - location of subview, use `{{_SUBVIEW}}` in your `view` to display this. This is optionally.
 * **data** - A Javascript object. 
 
 ```
