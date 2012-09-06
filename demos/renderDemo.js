@@ -1,4 +1,4 @@
-var mailkit = require('./mailkit.js'); //use just mailkit if installed via NPM
+var mailkit = require('../mailkit.js'); //use just mailkit if installed via NPM
 
 var mailOptions = {
 	view: './templates/layout.bt',
