@@ -1,4 +1,4 @@
-#MailKit 0.1.3#
+#MailKit 0.1.4#
 
 A simple but powerful email wrapper around [Nodemailer](https://github.com/andris9/Nodemailer).
 
