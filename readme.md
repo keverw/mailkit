@@ -14,7 +14,7 @@ A simple but powerful email wrapper around [Nodemailer](https://github.com/andri
 ## Setup ##
 To set up MailKit on your Node.js server use npm.
 
-    npm install mailkit
+	npm install mailkit
 
 ## Basic Usage ##
 if no `smtp` details is defined, sendmail will be used by default, this should work on Mac and Linux systems.
@@ -23,10 +23,10 @@ if no `smtp` details is defined, sendmail will be used by default, this should w
 var mailkit = require('mailkit');
 
 var mailOptions = {
-    from: "Sender Name ✔ <sender@example.com>", // sender address
-    to: "lolkatz@localhost", // can also be a list: "receiver1@example.com, receiver2@example.com"
-    subject: "Hello ✔", // Subject line
-    body: "<b>Hello world ✔</b>" //body
+	from: "Sender Name ✔ <sender@example.com>", // sender address
+	to: "lolkatz@localhost", // can also be a list: "receiver1@example.com, receiver2@example.com"
+	subject: "Hello ✔", // Subject line
+	body: "<b>Hello world ✔</b>" //body
 }
 
 mailkit.send(mailOptions, function(error, status)
@@ -57,37 +57,37 @@ var mailkit = require('mailkit');
 
 var SMTP = {
 service: "Gmail",
-    auth: {
-        user: "username@gmail.com",
-        pass: "userpass"
-    }
+	auth: {
+		user: "username@gmail.com",
+		pass: "userpass"
+	}
 };
 
 var mailOptions = {
-    from_name: "Your name",
-    from_addr: "username@gmail.com",
-    to: "lolkatz@localhost", // can also be a list: "receiver1@example.com, receiver2@example.com"
-    subject: "Hello ✔", // Subject line,
-    mime: 'html',
-    view: './templates/layout.bt',
-    subview: './templates/signup.bt',
-    data: {year: '2012'},
-    //html: "<b>Hello world ✔</b>",
-    //body: "<b>Hello world ✔</b>" //body,
-    smtp: SMTP
+	from_name: "Your name",
+	from_addr: "username@gmail.com",
+	to: "lolkatz@localhost", // can also be a list: "receiver1@example.com, receiver2@example.com"
+	subject: "Hello ✔", // Subject line,
+	mime: 'html',
+	view: './templates/layout.bt',
+	subview: './templates/signup.bt',
+	data: {year: '2012'},
+	//html: "<b>Hello world ✔</b>",
+	//body: "<b>Hello world ✔</b>" //body,
+	smtp: SMTP
 }
 
 mailkit.send(mailOptions, function(error, status)
 {
-    console.log(status);
-    if (error)
-    {
-        console.log('an error');
-    }
-    else
-    {
-        console.log('not an error!');
-    }
+	console.log(status);
+	if (error)
+	{
+		console.log('an error');
+	}
+	else
+	{
+		console.log('not an error!');
+	}
 });
 ```
 
@@ -153,13 +153,13 @@ SMTP envelope is usually auto generated from `from`, `to`, `cc` and `bcc` fields
 
 ```
 mailOptions = {
-    ...,
-    from: "mailer@node.ee",
-    to: "daemon@node.ee",
-    envelope: {
-        from: "Daemon <deamon@node.ee>",
-        to: "mailer@node.ee, Mailer <mailer2@node.ee>"
-    }
+	...,
+	from: "mailer@node.ee",
+	to: "daemon@node.ee",
+	envelope: {
+		from: "Daemon <deamon@node.ee>",
+		to: "mailer@node.ee, Mailer <mailer2@node.ee>"
+	}
 }
 ```
 
@@ -181,37 +181,37 @@ Attachments can be added as many as you want.
 
 ```
 var mailOptions = {
-    ...
-    attachments: [
-        {   // utf-8 string as an attachment
-            fileName: "text1.txt",
-            contents: "hello world!
-        },
-        {   // binary buffer as an attachment
-        fileName: "text2.txt",
-            contents: new Buffer("hello world!,"utf-8")
-        },
-        {   // file on disk as an attachment
-            fileName: "text3.txt",
-            filePath: "/path/to/file.txt" // stream this file
-        },
-        {   // fileName and content type is derived from filePath
-            filePath: "/path/to/file.txt"
-        },
-        {   // stream as an attachment
-            fileName: "text4.txt",
-            streamSource: fs.createReadStream("file.txt")
-        },
-        {   // define custom content type for the attachment
-            fileName: "text.bin",
-            contents: "hello world!,
-            contentType: "text/plain"
-        },
-        {   // use URL as an attachment
-            fileName: "license.txt",
-            filePath: "https://raw.github.com/andris9/Nodemailer/master/LICENSE"
-        }
-    ]
+	...
+	attachments: [
+		{ // utf-8 string as an attachment
+			fileName: "text1.txt",
+			contents: "hello world!
+		},
+		{ // binary buffer as an attachment
+		fileName: "text2.txt",
+			contents: new Buffer("hello world!,"utf-8")
+		},
+		{ // file on disk as an attachment
+			fileName: "text3.txt",
+			filePath: "/path/to/file.txt" // stream this file
+		},
+		{ // fileName and content type is derived from filePath
+			filePath: "/path/to/file.txt"
+		},
+		{ // stream as an attachment
+			fileName: "text4.txt",
+			streamSource: fs.createReadStream("file.txt")
+		},
+		{ // define custom content type for the attachment
+			fileName: "text.bin",
+			contents: "hello world!,
+			contentType: "text/plain"
+		},
+		{ // use URL as an attachment
+			fileName: "license.txt",
+			filePath: "https://raw.github.com/andris9/Nodemailer/master/LICENSE"
+		}
+	]
 }
 ```
 
@@ -223,13 +223,13 @@ The `cid` value should be as unique as possible!
 
 ```
 var mailOptions = {
-    ...
-    html: "Embedded image: <img src='cid:unique@node.ee' />",
-    attachments: [{
-        filename: "image.png",
-        filePath: "/path/to/file",
-        cid: "unique@node.ee" //same cid value as in the html img src
-    }]
+	...
+	html: "Embedded image: <img src='cid:unique@node.ee' />",
+	attachments: [{
+		filename: "image.png",
+		filePath: "/path/to/file",
+		cid: "unique@node.ee" //same cid value as in the html img src
+	}]
 }
 ```
 ##Well known services for SMTP##

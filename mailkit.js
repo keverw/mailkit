@@ -3,12 +3,12 @@
 	//helper functions
 	function numKeys(obj)
 	{
-    	var count = 0;
-    	for(var prop in obj)
-    	{
-    	    count++;
-    	}
-    	return count;
+		var count = 0;
+		for(var prop in obj)
+		{
+			count++;
+		}
+		return count;
 	}
 
 	//module
@@ -194,14 +194,14 @@
 		{
 			render(user_options, function(err, html)
 			{
-    			console.log(err);
-    			if (err)
-    			{
-    				callback(true, {type: 'template', template_error: err});
-    			}
-    			else
-    			{
-	    			if (mime == 'both')
+				console.log(err);
+				if (err)
+				{
+					callback(true, {type: 'template', template_error: err});
+				}
+				else
+				{
+					if (mime == 'both')
 					{
 						options.generateTextFromHTML = true;
 						options.html = html;
@@ -209,13 +209,13 @@
 					else if (mime == 'html')
 					{
 						options.html = html;
-					}	
+					}
 					else //text
 					{
 						options.text = html;
-					}    			
-    				send_part2(mime, user_options, options, callback);
-    			}
+					}
+					send_part2(mime, user_options, options, callback);
+				}
 			});
 		}
 	}
@@ -227,14 +227,14 @@
 		{
 			basictemplate.render_sub(user_options.view, user_options.subview, user_options.data, function(err, html)
 			{
-    			callback(err, html);
+				callback(err, html);
 			});
 		}
 		else //just a single view
 		{
 			basictemplate.render(user_options.view, user_options.data, function(err, html)
 			{
-    			callback(err, html);
+				callback(err, html);
 			});
 		}
 	}
