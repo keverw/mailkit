@@ -1,4 +1,4 @@
-#MailKit 0.1.4#
+#MailKit 0.1.5#
 
 A simple but powerful email wrapper around [Nodemailer](https://github.com/andris9/Nodemailer).
 
@@ -254,4 +254,4 @@ Currently cupported services are:
 Predefined service data covers `host`, `port` and secure connection settings, any other parameters (ie. `auth`) need to be set separately.
 
 ##Credits##
-This is based on Nodemailer 0.3.20, and some of this readme is copied from it's docs.
+This is based on Nodemailer 0.3.26, and some of this readme is copied from it's docs.
