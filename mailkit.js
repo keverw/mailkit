@@ -30,8 +30,6 @@
 		}
 		
 		//send
-		console.log('mime: ' + mime);
-		console.log(options);
 		transport.sendMail(options, function(error, response)
 		{
 			if(error)
@@ -194,7 +192,6 @@
 		{
 			render(user_options, function(err, html)
 			{
-				console.log(err);
 				if (err)
 				{
 					callback(true, {type: 'template', template_error: err});
